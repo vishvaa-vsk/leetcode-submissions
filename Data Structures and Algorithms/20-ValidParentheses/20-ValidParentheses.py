@@ -1,0 +1,15 @@
+# Last updated: 6/4/2026, 6:37:48 PM
+class Solution:
+    def isValid(self, s: str) -> bool:
+        chars = {'}':'{',']':'[',')':'('}
+        stack = []
+        for c in s:
+            if c in chars:
+                if stack and stack[-1] == chars[c]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(c)
+        return True if not stack else False
+        
